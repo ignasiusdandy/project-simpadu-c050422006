@@ -1,22 +1,22 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\Schedule;
-use App\Http\Resources\ScheduleResource;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Resources\SubjectResource;
+use App\Models\Subject;
 
-class ScheduleController extends Controller
+class SubjectController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-     public function index(Request $request)
+    public function index(Request $request)
     {
         $user = $request->user();
-        $schedules = Schedule::where('student_id', '=', $user->id)->get();
-        return ScheduleResource::collection($schedules->load('subject'));
+        $subjects = Subject::where('id', '=', $user->id)->get();
+        return SubjectResource::collection($subjects->load('schedule'));
     }
 
     /**
