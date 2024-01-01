@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Faker\Provider\Lorem;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,6 +20,11 @@ class SubjectFactory extends Factory
         return [
             'title' => fake()->word(),
             'lecturer_id' => 3,
+            'semester'=> 'Ganjil',
+            'academic_year'=>'2021/2022',
+            'sks'=>3,
+            'code'=>\Faker\Provider\Base::randomElement(['RYY137', 'RWD075', 'YVE895','EYB931']),
+            'description' => fake()->paragraph(),
         ];
     }
 }

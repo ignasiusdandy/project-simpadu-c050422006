@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">SIMPADU-C030322999</a>
+            <a href="index.html">SIMPADU-C050422006</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">SKD</a>
@@ -24,6 +24,27 @@
                         <a class="nav-link" href="{{ route('user.index') }}">User List</a>
                     </li>
 
+                </ul>
+            </li>
+
+            {{-- Subjects --}}
+            <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Subjects</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ route('subject.index') }}">Subject list</a>
+                    </li>
+                </ul>
+            </li>
+
+
+                    {{-- Schedules --}}
+            <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Schedules</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ route('schedule.index') }}">Schedules list</a>
+                    </li>
                 </ul>
             </li>
 
