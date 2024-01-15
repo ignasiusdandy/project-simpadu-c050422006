@@ -58,6 +58,7 @@
                                         <th>Action</th>
                                     </tr>
                                     @foreach ($subjects as $subject)
+                                    
                                     <tr>
                                         <td>
                                             {{ $subject->id }}
@@ -66,7 +67,7 @@
                                             {{ $subject->title }}
                                         </td>
                                         <td>
-                                            {{ $subject->lecturer_id }}
+                                            {{ $subject->lecturer_name }}
                                         </td>
                                         <td>
                                             {{ $subject->semester }}

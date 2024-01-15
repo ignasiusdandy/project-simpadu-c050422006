@@ -14,17 +14,34 @@ class SubjectController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
-    {
-        $subjects = DB::table('subjects')
-            ->when($request->input('title'), function ($query, $title) {
-                return $query->where('title', 'like', '%' . $title . '%');
-            })
-            ->select('id','title', 'lecturer_id', 'semester', 'academic_year', 'sks')
-            ->orderBy('id', 'asc')
-            ->paginate(5);
-        return view('pages.subjects.index', compact('subjects'));
-    }
+
+
+     public function index(Request $request)
+     {
+         $subjects = DB::table('subjects')
+             ->join('users', 'subjects.lecturer_id', '=', 'users.id')
+             ->when($request->input('title'), function ($query, $title) {
+                 return $query->where('subjects.title', 'like', '%' . $title . '%');
+             })
+             ->select('subjects.id', 'subjects.title', 'users.name as lecturer_name', 'subjects.semester', 'subjects.academic_year', 'subjects.sks')
+             ->orderBy('subjects.id', 'asc')
+             ->paginate(15);
+     
+         return view('pages.subjects.index', compact('subjects'));
+     }
+
+
+    // public function index(Request $request)
+    // {
+    //     $subjects = DB::table('subjects','users')
+    //         ->when($request->input('title'), function ($query, $title) {
+    //             return $query->where('title', 'like', '%' . $title . '%');
+    //         })
+    //         ->select('id','title', 'lecturer_id', 'semester', 'academic_year', 'sks')
+    //         ->orderBy('id', 'asc')
+    //         ->paginate(15);
+    //     return view('pages.subjects.index', compact('subjects'));
+    // }
 
     public function create()
     {

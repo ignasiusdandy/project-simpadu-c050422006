@@ -27,6 +27,11 @@ class Subject extends Authenticatable
         return $this->belongsTo(User::class);
     }
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public function schedule()
     {
         return $this->belongsTo(Subject::class);
