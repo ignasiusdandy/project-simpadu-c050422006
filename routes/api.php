@@ -3,6 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\ScheduleController;
 use App\Http\Controllers\Api\SubjectController;
+use App\Http\Controllers\Api\RegistrationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 /*
@@ -27,4 +28,7 @@ Route::apiResource('schedules', ScheduleController::class)
     ->middleware('auth:sanctum');
 
 Route::apiResource('subjects', SubjectController::class)
+    ->middleware('auth:sanctum');
+
+Route::apiResource('registrations', RegistrationController::class)
     ->middleware('auth:sanctum');

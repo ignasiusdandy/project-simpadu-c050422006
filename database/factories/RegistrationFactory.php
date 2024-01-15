@@ -18,19 +18,19 @@ class RegistrationFactory extends Factory
     {
         return [
             'no_pendaftaran' =>  1 + $this->faker->unique()->numberBetween(1, 100),
-            'nisn' => 2010400,
+            'nisn' =>  $this->faker->numerify('##########'),
             'nama' => $this->faker->name(),
             'alamat' => $this->faker->address(),
             'tempat_lahir' => $this->faker->city(),
             'tanggal_lahir' => $this->faker->dateTime(),
-            'asal_sekolah' => 'unlam',
-            'jenis_kelamin' => 'lelaki',
-            'jurusan' => 'elektro',
-            'nama_ayah' => 'udin',
+            'asal_sekolah' => 'Politeknik Negeri Banjarmasin',
+            'jenis_kelamin' => $this->faker->randomElement(['laki-laki', 'perempuan']),
+            'jurusan' => 'Teknik Elektro',
+            'nama_ayah' => $this->faker->firstNameMale,
             'pekerjaan_ayah' => 'dokter',
-            'nama_ibu' => 'pia',
-            'pekerjaan_ibu' => 'tidur',
-            'penghasilan_orang_tua' => 20000,
+            'nama_ibu' => $this->faker->firstNameFemale,
+            'pekerjaan_ibu' => 'guru',
+            'penghasilan_orang_tua' => 20000000,
         ];
     }
 }

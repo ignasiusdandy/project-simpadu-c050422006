@@ -11,7 +11,7 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>All Registration</h1>
+            <h1>PENDAFTARAN MAHASISWA BARU</h1>
 
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
@@ -39,7 +39,7 @@
                         <div class="card-body">
 
                             <div class="float-right">
-                                <form method="GET" , action="{{ route('registration.index') }}">
+                                <form method="GET" enctype="multipart/form-data, action="{{ route('registration.index') }} ">
                                     <div class="input-group">
                                         <input type="text" class="form-control" placeholder="Search" name="id">
                                         <div class="input-group-append">
@@ -116,9 +116,8 @@
                                             {{ number_format($registration->penghasilan_orang_tua, 0, ',', '.') }}
                                         </td>
                                         <td>
-                                            
-                                            <img src="{{ 'storage/' . $registration->image }}" alt="foto" width="100" height="100">
-                                        </td>
+                                            <img src="{{ asset('storage/' . $registration->image) }}" alt="foto" width="100" height="100">
+                                        </td>                                        
                                         <td>
                                             <div class="d-flex justify-content">
                                                 <a href='{{ route('registration.edit', $registration->id) }}' class="btn btn-sm btn-warning btn-icon ">

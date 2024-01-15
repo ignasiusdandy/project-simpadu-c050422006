@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
 class Registration extends Model
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
     protected $fillable = [
     'no_pendaftaran',
     'nisn',
@@ -25,4 +27,9 @@ class Registration extends Model
     'penghasilan_orang_tua',
     'image',
 ];
+
+public function registration()
+    {
+        return $this->belongsTo(Registration::class);
+    }
 }
