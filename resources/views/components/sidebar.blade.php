@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="index.html">SIMPADU-C030322999</a>
+            <a href="index.html">SIMPADU-C050422006</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="index.html">SKD</a>
@@ -43,6 +43,17 @@
                 <ul class="dropdown-menu">
                     <li>
                         <a class="nav-link" href="{{ route('schedule.index') }}">Schedule List</a>
+                    </li>
+
+                </ul>
+            </li>
+
+            {{-- Registration --}}
+            <li class="nav-item dropdown ">
+                <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Registration</span></a>
+                <ul class="dropdown-menu">
+                    <li>
+                        <a class="nav-link" href="{{ route('registration.index') }}">Registration List</a>
                     </li>
 
                 </ul>

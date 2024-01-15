@@ -3,8 +3,10 @@
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\RegistrationController;
 use App\Models\Subject;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('user', UserController::class);
     Route::resource('subject', SubjectController::class);
     Route::resource('schedule',ScheduleController::class);
+    Route::resource('registration',RegistrationController::class);
     
 });
 

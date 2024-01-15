@@ -23,6 +23,8 @@ class ScheduleController extends Controller
         return view('pages.schedules.index', compact('schedules'));
     }
 
+    
+
     public function edit(Schedule $schedule)
     {
         return view('pages.schedules.edit')->with('schedule', $schedule);
