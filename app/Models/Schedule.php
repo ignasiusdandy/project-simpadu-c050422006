@@ -4,10 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 
-class Schedule extends Model
+class Schedule extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
+    protected $fillable = [
+        'student_id',
+        'subject_id',
+        'schedule_date',
+        'schedule_type',
+    ];
 
     public function subject()
     {
@@ -19,3 +28,18 @@ class Schedule extends Model
         return $this->belongsTo(User::class);
     }
 }
+
+// class Schedulee extends Model
+// {
+//     use HasFactory;
+
+//     public function subject()
+//     {
+//         return $this->belongsTo(Subject::class);
+//     }
+
+//     public function student()
+//     {
+//         return $this->belongsTo(User::class);
+//     }
+// }

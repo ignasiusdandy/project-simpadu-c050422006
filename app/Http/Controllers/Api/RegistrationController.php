@@ -1,22 +1,23 @@
 <?php
 
 namespace App\Http\Controllers\Api;
-use App\Models\Schedule;
-use App\Http\Resources\ScheduleResource;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Registration;
+use App\Http\Resources\RegistrationResource;
 
-class ScheduleController extends Controller
+
+class RegistrationController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-
-     public function index(Request $request)
+    public function index(Request $request)
     {
-        $user = $request->user();
-        $schedules = Schedule::where('student_id', '=', $user->id)->get();
-        return ScheduleResource::collection($schedules->load('subject'));
+        $user = $request->User();
+        $registrations = Registration::where('id', '=', $user->id)->get();
+        return RegistrationResource::collection($registrations->load('registration'));
     }
 
     /**

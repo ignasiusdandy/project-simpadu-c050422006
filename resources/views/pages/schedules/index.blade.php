@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Users')
+@section('title', 'schedules')
 
 @push('style')
 <!-- CSS Libraries -->
@@ -11,12 +11,12 @@
 <div class="main-content">
     <section class="section">
         <div class="section-header">
-            <h1>All Users</h1>
+            <h1>All Schedules</h1>
 
             <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
-                <div class="breadcrumb-item"><a href="#">Users</a></div>
-                <div class="breadcrumb-item">All Users</div>
+                <div class="breadcrumb-item"><a href="#">Schedules</a></div>
+                <div class="breadcrumb-item">All Schedules</div>
             </div>
         </div>
         <div class="section-body">
@@ -30,18 +30,13 @@
             <div class="row mt-4">
                 <div class="col-12">
                     <div class="card">
-                        <div class="card-header">
-                            <h4>All Users</h4>
-                            <div class="section-header-button">
-                                <a href="{{ route('user.create') }}" class="btn btn-primary">New User</a>
-                            </div>
-                        </div>
+                        
                         <div class="card-body">
 
                             <div class="float-right">
-                                <form method="GET" , action="{{ route('user.index') }}">
+                                <form method="GET" , action="{{ route('schedule.index') }}">
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Search" name="name">
+                                        <input type="text" class="form-control" placeholder="Search" name="id">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                                         </div>
@@ -54,39 +49,41 @@
                             <div class="table-responsive">
                                 <table class="table-striped table">
                                     <tr>
-
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>HandPhone</th>
-                                        <th>Created At</th>
+                                        <th>id</th>
+                                        <th>Student_id</th>
+                                        <th>Subject_id</th>
+                                        <th>Schedule_date</th>
+                                        <th>Schedule_type</th>
                                         <th>Action</th>
                                     </tr>
-                                    @foreach ($users as $user)
+                                    @foreach ($schedules as $schedule)
                                     <tr>
                                         <td>
-                                            {{ $user->name }}
+                                            {{ $schedule->id }}
                                         </td>
                                         <td>
-                                            {{ $user->email }}
+                                            {{ $schedule->student_id }}
                                         </td>
                                         <td>
-                                            {{ $user->handphone }}
+                                            {{ $schedule->subject_id }}
                                         </td>
                                         <td>
-                                            {{ $user->created_at }}
+                                            {{ $schedule->schedule_date }}
                                         </td>
                                         <td>
-                                            <div class="d-flex justify-content-center">
-                                                <a href='{{ route('user.edit', $user->id) }}' class="btn btn-sm btn-info btn-icon">
-                                                    <i class="fas fa-edit"></i>
+                                            {{ $schedule->schedule_type }}
+                                        </td>
+                                        <td>
+                                            <div class="d-flex justify-content">
+                                                <a href='{{ route('schedule.edit', $schedule->id) }}' class="btn btn-sm btn-warning btn-icon ">
                                                     Edit
                                                 </a>
 
-                                                <form action="{{ route('user.destroy', $user->id) }}" method="POST" class="ml-2">
+                                                <form action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="ml-2">
                                                     <input type="hidden" name="_method" value="DELETE" />
                                                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                                                     <button class="btn btn-sm btn-danger btn-icon confirm-delete">
-                                                        <i class="fas fa-times"></i> Delete
+                                                        Delete
                                                     </button>
                                                 </form>
                                             </div>
@@ -96,7 +93,7 @@
                                 </table>
                             </div>
                             <div class="float-right">
-                                {{ $users->withQueryString()->links() }}
+                                {{ $schedules->withQueryString()->links() }}
                             </div>
                         </div>
                     </div>
